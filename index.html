@@ -1,517 +1,490 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이채원 | 프론트엔드 개발자</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이채원 | 프론트엔드 개발자</title>
 
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      폰트: 구글 웹폰트(Pretendand 대체용 Noto Sans KR + 영문 디스플레이)
      인터넷 연결 시 자동 로드됩니다. 수정할 필요 없습니다.
 ════════════════════════════════════════════════════════════════ -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-/* ═══════════════════════════════════════════════════════════════
-   색상 팔레트 (색을 바꾸고 싶으면 여기 값만 바꾸세요)
-════════════════════════════════════════════════════════════════ */
-:root{
-  --navy:      #0B1F3A;   /* 가장 진한 네이비 (배경/헤더) */
-  --navy-2:    #13294B;   /* 카드/섹션 네이비 */
-  --ink:       #1A2B42;   /* 본문 진한 글씨 */
-  --paper:     #F7F9FC;   /* 밝은 배경 */
-  --line:      #DCE3ED;   /* 옅은 구분선 */
-  --cyan:      #12B5C9;   /* 포인트 컬러 (시안) */
-  --cyan-deep: #0E8FA0;   /* 진한 시안 */
-  --muted:     #5C6B80;   /* 흐린 글씨 */
-  --white:     #FFFFFF;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Noto Sans KR',sans-serif;
-  color:var(--ink);
-  background:var(--paper);
-  line-height:1.7;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,.display{font-family:'Space Grotesk','Noto Sans KR',sans-serif;}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-
-/* ── 상단 네비게이션 ── */
-.nav{
-  position:sticky;top:0;z-index:50;
-  background:rgba(11,31,58,.92);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav .brand{font-family:'Space Grotesk';font-weight:700;color:var(--white);font-size:18px;letter-spacing:.5px}
-.nav .brand span{color:var(--cyan)}
-.nav ul{display:flex;gap:28px;list-style:none}
-.nav ul a{color:#C7D2E0;font-size:14px;font-weight:500;transition:color .2s}
-.nav ul a:hover{color:var(--cyan)}
-@media(max-width:720px){.nav ul{display:none}}
-
-/* ── HERO ── */
-.hero{background:var(--navy);color:var(--white);padding:96px 0 88px;position:relative;overflow:hidden}
-.hero:before{ /* 배경 장식: 시안 그라데이션 원 */
-  content:'';position:absolute;right:-120px;top:-120px;width:420px;height:420px;
-  background:radial-gradient(circle,rgba(18,181,201,.22),transparent 70%);border-radius:50%;
-}
-.hero .eyebrow{color:var(--cyan);font-family:'Space Grotesk';font-weight:500;letter-spacing:3px;font-size:13px;text-transform:uppercase;margin-bottom:20px}
-.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.15;font-weight:700;color:var(--white);letter-spacing:-1px}
-.hero h1 .hl{color:var(--cyan)}
-.hero .sub{margin-top:24px;font-size:18px;color:#C7D2E0;max-width:620px;font-weight:400}
-.hero .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 26px;border-radius:8px;font-weight:700;font-size:15px;transition:transform .15s,background .2s}
-.btn-primary{background:var(--cyan);color:var(--navy)}
-.btn-primary:hover{background:#3ED0E0;transform:translateY(-2px)}
-.btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--white)}
-.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
-
-/* ── 섹션 공통 ── */
-.section{padding:80px 0}
-.section-head{margin-bottom:48px}
-.section-head .eyebrow{color:var(--cyan-deep);font-family:'Space Grotesk';font-weight:500;letter-spacing:2px;font-size:12px;text-transform:uppercase}
-.section-head h2{font-size:clamp(26px,4vw,38px);margin-top:8px;color:var(--navy);font-weight:700;letter-spacing:-.5px}
-.section-head p{margin-top:12px;color:var(--muted);max-width:640px}
-
-/* ── ABOUT ── */
-.about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
-.about .portrait{background:var(--navy-2);border-radius:16px;aspect-ratio:4/5;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#4A5B72;font-size:14px;border:1px solid var(--line)}
-.about .bio p{margin-bottom:16px;color:var(--ink)}
-.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.tag{background:var(--white);border:1px solid var(--line);color:var(--cyan-deep);font-size:13px;font-weight:500;padding:6px 14px;border-radius:100px}
-@media(max-width:720px){.about{grid-template-columns:1fr}}
-
-/* ── SKILLS ── */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.skill-col{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px}
-.skill-col h3{font-size:16px;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:8px}
-.skill-col .lv{font-size:12px;color:var(--cyan-deep);font-weight:500;margin-bottom:16px;font-family:'Space Grotesk'}
-.skill-col ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.skill-col li{background:var(--paper);border:1px solid var(--line);font-size:13px;padding:6px 12px;border-radius:8px;color:var(--ink)}
-@media(max-width:720px){.skills-grid{grid-template-columns:1fr}}
-
-/* ── PROJECTS ── */
-.cat-label{display:flex;align-items:center;gap:14px;margin:48px 0 24px}
-.cat-label .num{font-family:'Space Grotesk';font-weight:700;color:var(--cyan);font-size:14px}
-.cat-label h3{font-size:20px;color:var(--navy);font-weight:700}
-.cat-label .rule{flex:1;height:1px;background:var(--line)}
-.cat-label:first-of-type{margin-top:0}
-
-.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.proj-grid.feature{grid-template-columns:1fr}
-.card{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(11,31,58,.10)}
-.card .thumb{aspect-ratio:16/9;background:var(--navy-2);display:flex;align-items:center;justify-content:center;color:#4A5B72;font-size:13px;overflow:hidden}
-.card.big .thumb{aspect-ratio:21/9}
-.card .body{padding:22px 24px 24px}
-.card .kicker{font-family:'Space Grotesk';font-size:12px;color:var(--cyan-deep);font-weight:500;letter-spacing:1px;text-transform:uppercase}
-.card h4{font-size:19px;color:var(--navy);margin:6px 0 4px;font-weight:700}
-.card .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
-.card .desc{font-size:14.5px;color:var(--ink);margin-bottom:16px}
-.card .stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
-.card .stack span{font-size:12px;background:var(--paper);border:1px solid var(--line);padding:4px 10px;border-radius:6px;color:var(--ink)}
-.card .links{display:flex;gap:14px;margin-top:auto}
-.card .links a{font-size:13px;font-weight:700;color:var(--cyan-deep);display:inline-flex;align-items:center;gap:5px}
-.card .links a:hover{color:var(--cyan)}
-.card.placeholder{border-style:dashed;background:transparent}
-.card.placeholder .thumb{background:transparent;border-bottom:1px dashed var(--line)}
-@media(max-width:720px){.proj-grid{grid-template-columns:1fr}}
-
-/* ── EXPERIENCE ── */
-.timeline{border-left:2px solid var(--line);padding-left:28px;margin-left:6px}
-.tl-item{position:relative;padding-bottom:32px}
-.tl-item:last-child{padding-bottom:0}
-.tl-item:before{content:'';position:absolute;left:-36px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:3px solid var(--paper)}
-.tl-item .when{font-family:'Space Grotesk';font-size:13px;color:var(--cyan-deep);font-weight:500}
-.tl-item h4{font-size:17px;color:var(--navy);margin:2px 0 6px}
-.tl-item p{font-size:14.5px;color:var(--ink)}
-
-/* ── CONTACT ── */
-.contact{background:var(--navy);color:var(--white);border-radius:20px;padding:56px 40px;text-align:center}
-.contact h2{color:var(--white);font-size:clamp(24px,4vw,34px);margin-bottom:14px}
-.contact p{color:#C7D2E0;margin-bottom:28px}
-.contact .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-
-/* ── FOOTER ── */
-footer{text-align:center;padding:40px 0;color:var(--muted);font-size:13px}
-
-/* 접근성: 키보드 포커스 */
-a:focus-visible,.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-/* 모션 최소화 선호 존중 */
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style>
-</head>
-<body>
-
-<!-- ═══════════════════════════════════════════════════════════════
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════════
      네비게이션 (이름만 바꾸면 됩니다)
 ════════════════════════════════════════════════════════════════ -->
-<nav class="nav">
-  <div class="wrap">
-    <div class="brand">CHAEWON<span>.</span></div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="brand">CHAEWON<span>.</span></div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      HERO — 첫 화면
      ▶ 고칠 것: 이름, 한 줄 소개, 부연 설명
 ════════════════════════════════════════════════════════════════ -->
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Frontend Developer · 금융IT 지향</div>
-    <h1>화면을 만드는 개발자에서,<br><span class="hl">데이터 흐름까지 이해하는</span><br>개발자로.</h1>
-    <p class="sub">서비스를 직접 기획하고 화면으로 구현해온 프론트엔드 개발자 이채원입니다. 사용자가 믿고 쓸 수 있는 금융 서비스를 만드는 것을 목표로 합니다.</p>
-    <div class="cta">
-      <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-      <a href="#contact" class="btn btn-ghost">연락하기</a>
-    </div>
-  </div>
-</header>
+    <header class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Frontend Developer · 금융IT 지향</div>
+        <h1>
+          화면을 만드는 개발자에서,<br /><span class="hl"
+            >데이터 흐름까지 이해하는</span
+          ><br />개발자로.
+        </h1>
+        <p class="sub">
+          서비스를 직접 기획하고 화면으로 구현해온 프론트엔드 개발자
+          이채원입니다. 사용자가 믿고 쓸 수 있는 금융 서비스를 만드는 것을
+          목표로 합니다.
+        </p>
+        <div class="cta">
+          <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+          <a href="#contact" class="btn btn-ghost">연락하기</a>
+        </div>
+      </div>
+    </header>
 
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      ABOUT — 소개
      ▶ 사진 넣는 법: 아래 <div class="portrait"> 안의 글자를 지우고
        <img src="이미지파일이름.jpg" alt="이채원"> 를 넣으세요.
        (이미지 파일을 이 html과 같은 폴더에 두면 됩니다)
 ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">About</div>
-      <h2>소개</h2>
-    </div>
-    <div class="about">
-
-      <!-- 사진 자리 -->
-      <div class="portrait">
-        여기에 사진을 넣으세요<br>(선택)
-        <!-- 사진을 넣으려면 위 한 줄을 지우고 아래처럼:
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">About</div>
+          <h2>소개</h2>
+        </div>
+        <div class="about">
+          <!-- 사진 자리 -->
+          <div class="portrait">
+            여기에 사진을 넣으세요<br />(선택)
+            <!-- 사진을 넣으려면 위 한 줄을 지우고 아래처럼:
              <img src="profile.jpg" alt="이채원"> -->
-      </div>
+          </div>
 
-      <!-- 자기소개 텍스트 -->
-      <div class="bio">
-        <p>여러 프로젝트에서 서비스를 직접 기획하고 화면으로 구현해 배포해온 프론트엔드 개발자입니다. QA 인턴십에서 작은 오류 하나가 사용자 신뢰를 무너뜨릴 수 있음을 배우며, 정확성과 신뢰가 가장 중요한 금융 분야에 관심을 갖게 되었습니다.</p>
-        <p>한성대 IT공과대학에서 시작해, 진로를 다시 고민한 끝에 상명대 컴퓨터과학전공으로 방향을 정했습니다. 돌아온 만큼 이 선택에 확신이 있습니다.</p>
-        <p>지금은 화면 뒤에서 데이터가 어떻게 처리되고 전달되는지까지 이해하는 개발자로 성장하고 있습니다.</p>
-        <div class="tags">
-          <span class="tag"># 프론트엔드</span>
-          <span class="tag"># 금융IT</span>
-          <span class="tag"># QA 경험</span>
-          <span class="tag"># 완주력</span>
+          <!-- 자기소개 텍스트 -->
+          <div class="bio">
+            <p>
+              여러 프로젝트에서 서비스를 직접 기획하고 화면으로 구현해 배포해온
+              프론트엔드 개발자입니다. QA 인턴에서 작은 오류 하나가 사용자
+              신뢰를 무너뜨릴 수 있음을 배우며, 정확성과 신뢰가 가장 중요한 금융
+              분야에 관심을 갖게 되었습니다.
+            </p>
+            <p>
+              지금은 화면 뒤에서 데이터가 어떻게 처리되고 전달되는지까지
+              이해하는 개발자로 성장하고 있습니다.
+            </p>
+            <div class="tags">
+              <span class="tag"># 프론트엔드</span>
+              <span class="tag"># 금융IT</span>
+              <span class="tag"># QA 경험</span>
+              <span class="tag"># 완주력</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      SKILLS — 기술 스택 (3단 계층: 정직하게)
      ▶ 각 <li> 안의 기술 이름을 자유롭게 추가/삭제하세요
 ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="skills" style="background:linear-gradient(180deg,#EEF2F8,var(--paper))">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Skills</div>
-      <h2>기술 스택</h2>
-      <p>지금 자신 있는 것과 배우고 있는 것을 솔직하게 구분했습니다.</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-col">
-        <h3>자신 있는 것</h3>
-        <div class="lv">Comfortable</div>
-        <ul>
-          <li>React</li><li>TypeScript</li><li>JavaScript</li>
-          <li>HTML/CSS</li><li>Unity · C#</li>
-        </ul>
+    <section class="section section-tint" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Skills</div>
+          <h2>기술 스택</h2>
+          <p>기술 스택 작성하였음</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-col">
+            <h3>좀 많이 해봄</h3>
+            <div class="lv">Comfortable</div>
+            <ul>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>JavaScript</li>
+              <li>HTML/CSS</li>
+              <li>Unity · C#</li>
+            </ul>
+          </div>
+          <div class="skill-col">
+            <h3>다뤄봄</h3>
+            <div class="lv">Familiar</div>
+            <ul>
+              <li>Git / GitHub</li>
+              <li>Django</li>
+              <li>SQL</li>
+              <li>Python</li>
+              <li>Figma</li>
+            </ul>
+          </div>
+          <div class="skill-col">
+            <h3>학습 중인 것</h3>
+            <div class="lv">Learning</div>
+            <ul>
+              <li>백엔드 · 서버</li>
+              <li>데이터 처리</li>
+              <li>알고리즘 · 코딩테스트</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 자격증 -->
+        <div class="certs">
+          <strong>자격증</strong> &nbsp;
+          정보처리기사(실기준비중) · SQLD(시험봄)
+        </div>
       </div>
-      <div class="skill-col">
-        <h3>다뤄본 것</h3>
-        <div class="lv">Familiar</div>
-        <ul>
-          <li>Git / GitHub</li><li>Django</li><li>SQL</li>
-          <li>Python</li><li>Figma</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h3>학습 중인 것</h3>
-        <div class="lv">Learning</div>
-        <ul>
-          <li>백엔드 · 서버</li><li>데이터 처리</li><li>알고리즘 · 코딩테스트</li>
-        </ul>
-      </div>
-    </div>
-    <!-- 자격증 -->
-    <div style="margin-top:22px;font-size:14px;color:var(--muted)">
-      <strong style="color:var(--navy)">자격증</strong> &nbsp; 정보처리기사(준비 중) · SQLD(준비 중)
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      PROJECTS — 카테고리별
      ▶ 프로젝트 카드 복사/붙여넣기 방법은 코드 주석 참고
      ▶ 썸네일 이미지: <div class="thumb"> 안의 글자를 지우고
        <img src="이미지.png" alt="프로젝트명"> 넣으세요
 ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="projects">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Projects</div>
-      <h2>프로젝트</h2>
-      <p>지금까지 개발한 프로젝트를 웹 · 데이터 · 게임 · 진행 예정으로 묶었습니다.</p>
-    </div>
-
-    <!-- ▼▼▼ 대표 프로젝트 ▼▼▼ -->
-    <div class="cat-label"><span class="num">01</span><h3>대표 프로젝트</h3><div class="rule"></div></div>
-    <div class="proj-grid feature">
-
-      <!-- ===== 프로젝트 카드 (대표작, 큰 카드) ===== -->
-      <article class="card big">
-        <div class="thumb">
-          썸네일 이미지 자리 (16:9 권장)
-          <!-- 이미지 넣기: 위 글자 지우고 → <img src="wherelive.png" alt="어디살지"> -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Projects</div>
+          <h2>프로젝트</h2>
+          <p>
+            지금까지 개발한 프로젝트를 웹 · 데이터 · 게임 · 진행 예정으로
+            묶었습니다.
+          </p>
         </div>
-        <div class="body">
-          <div class="kicker">Web Service · 1인</div>
-          <h4>어디살지 (WhereLive)</h4>
-          <div class="meta">기획 · 개발 · 배포 전 과정 단독</div>
-          <p class="desc">주거 조건과 지역 정보를 제공해 사용자의 주거 선택을 돕는 웹 서비스. 사용자 선택과 직결되는 데이터를 다루며 정보의 정확성이 곧 서비스 신뢰임을 체감한 프로젝트입니다.</p>
-          <div class="stack"><span>기술 입력</span><span>예: React</span></div>
-          <div class="links">
-            <a href="#">GitHub ↗</a>
-            <a href="#">데모 ↗</a>
-          </div>
+
+        <!-- ▼▼▼ 대표 프로젝트 ▼▼▼ -->
+        <div class="cat-label">
+          <span class="num">01</span>
+          <h3>대표 프로젝트</h3>
+          <div class="rule"></div>
         </div>
-      </article>
+        <div class="proj-grid feature">
+          <!-- ===== 프로젝트 카드 (대표작, 큰 카드) ===== -->
+          <article class="card big">
+            <div class="thumb">
+              썸네일 이미지 자리 (16:9 권장)
+              <!-- 이미지 넣기: 위 글자 지우고 → <img src="wherelive.png" alt="어디살지"> -->
+            </div>
+            <div class="body">
+              <div class="kicker">Web Service · 1인</div>
+              <h4>어디살지 (WhereLive)</h4>
+              <div class="meta">기획 · 개발 · 배포 전 과정 단독</div>
+              <p class="desc">
+                주거 조건과 지역 정보를 제공해 사용자의 주거 선택을 돕는 웹
+                서비스. 사용자 선택과 직결되는 데이터를 다루며 정보의 정확성이
+                곧 서비스 신뢰임을 체감한 프로젝트입니다.
+              </p>
+              <div class="stack">
+                <span>기술 입력</span><span>예: React</span>
+              </div>
+              <div class="links">
+                <a href="#">GitHub ↗</a>
+                <a href="#">데모 ↗</a>
+              </div>
+            </div>
+          </article>
 
-      <!-- ===== 프로젝트 카드 (대표작 2) ===== -->
-      <article class="card big">
-        <div class="thumb">썸네일 이미지 자리</div>
-        <div class="body">
-          <div class="kicker">Metaverse · 4인 팀장</div>
-          <h4>캠퍼스 메타버스</h4>
-          <div class="meta">ZEP · 팀 결과물을 혼자 재구축해 학교 공식 자산으로 인계</div>
-          <p class="desc">학교 캠퍼스를 메타버스로 구현하고, 인계 규격에 맞춰 팀 결과물을 혼자 다시 구축했습니다. 백업 자료를 정리·활용하고, 이미지가 없던 천안 캠퍼스는 화면을 하나씩 다시 캡처해 채우며 끝까지 완성했습니다.</p>
-          <div class="stack"><span>ZEP</span><span>이미지 편집</span></div>
-          <div class="links"><a href="#">데모 영상 ↗</a></div>
+          <!-- ===== 프로젝트 카드 (대표작 2) ===== -->
+          <article class="card big">
+            <div class="thumb">썸네일 이미지 자리</div>
+            <div class="body">
+              <div class="kicker">Metaverse · 4인 팀장</div>
+              <h4>캠퍼스 메타버스</h4>
+              <div class="meta">
+                ZEP · 팀 결과물을 혼자 재구축해 학교 공식 자산으로 인계
+              </div>
+              <p class="desc">
+                학교 캠퍼스를 메타버스로 구현하고, 인계 규격에 맞춰 팀 결과물을
+                혼자 다시 구축했습니다. 백업 자료를 정리·활용하고, 이미지가 없던
+                천안 캠퍼스는 화면을 하나씩 다시 캡처해 채우며 끝까지
+                완성했습니다.
+              </p>
+              <div class="stack"><span>ZEP</span><span>이미지 편집</span></div>
+              <div class="links"><a href="#">데모 영상 ↗</a></div>
+            </div>
+          </article>
         </div>
-      </article>
-    </div>
 
-    <!-- ▼▼▼ 웹 서비스 ▼▼▼ -->
-    <div class="cat-label"><span class="num">02</span><h3>웹 서비스</h3><div class="rule"></div></div>
-    <div class="proj-grid">
-
-      <!-- ===== 카드 복사용 기본 틀 (이 <article>...</article> 통째로 복사해 새 프로젝트 추가) ===== -->
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">Web Service</div>
-          <h4>curit</h4>
-          <div class="meta">역할 입력 (예: 팀 규모 · 담당)</div>
-          <p class="desc">여기에 서비스 한 줄 소개를 적으세요. 무엇을 하는 서비스인지, 어떤 문제를 해결하는지.</p>
-          <div class="stack"><span>React</span><span>TypeScript</span><span>Vite</span></div>
-          <div class="links">
-            <a href="https://www.cur-it.duckdns.org/">데모 ↗</a>
-            <a href="https://github.com/cheiwonlee/curit">GitHub ↗</a>
-          </div>
+        <!-- ▼▼▼ 웹 서비스 ▼▼▼ -->
+        <div class="cat-label">
+          <span class="num">02</span>
+          <h3>웹 서비스</h3>
+          <div class="rule"></div>
         </div>
-      </article>
+        <div class="proj-grid">
+          <!-- ===== 카드 복사용 기본 틀 (이 <article>...</article> 통째로 복사해 새 프로젝트 추가) ===== -->
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">Web Service</div>
+              <h4>curit</h4>
+              <div class="meta">역할 입력 (예: 팀 규모 · 담당)</div>
+              <p class="desc">
+                여기에 서비스 한 줄 소개를 적으세요. 무엇을 하는 서비스인지,
+                어떤 문제를 해결하는지.
+              </p>
+              <div class="stack">
+                <span>React</span><span>TypeScript</span><span>Vite</span>
+              </div>
+              <div class="links">
+                <a href="https://www.cur-it.duckdns.org/">데모 ↗</a>
+                <a href="https://github.com/cheiwonlee/curit">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
 
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">Web Service · 1인</div>
-          <h4>ClearPlate</h4>
-          <div class="meta">교양 과제 · 전 과정 단독</div>
-          <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
-          <div class="stack"><span>기술 입력</span></div>
-          <div class="links"><a href="https://github.com/cheiwonlee/ClearPlate">GitHub ↗</a></div>
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">Web Service · 1인</div>
+              <h4>ClearPlate</h4>
+              <div class="meta">교양 과제 · 전 과정 단독</div>
+              <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
+              <div class="stack"><span>기술 입력</span></div>
+              <div class="links">
+                <a href="https://github.com/cheiwonlee/ClearPlate">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">Web Service · 팀</div>
+              <h4>TicketRush</h4>
+              <div class="meta">졸업 프로젝트 · 프론트엔드 담당</div>
+              <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
+              <div class="stack"><span>기술 입력</span></div>
+              <div class="links">
+                <a href="https://github.com/orgs/TicketRush/repositories"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">Web Service · 2인 팀장</div>
+              <h4>cseetv</h4>
+              <div class="meta">팀장 · 주도적으로 개발</div>
+              <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
+              <div class="stack"><span>기술 입력</span></div>
+              <div class="links">
+                <a href="https://github.com/cseetv">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">Web Service · 팀장</div>
+              <h4>밥팅</h4>
+              <div class="meta">
+                팀장 · 프론트엔드 · 기획/설계/조율 · 개발 중
+              </div>
+              <p class="desc">
+                여기에 서비스 한 줄 소개를 적으세요. (개발 진행 중)
+              </p>
+              <div class="stack"><span>기술 입력</span></div>
+              <div class="links">
+                <a href="https://github.com/cheiwonlee">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
         </div>
-      </article>
 
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">Web Service · 팀</div>
-          <h4>TicketRush</h4>
-          <div class="meta">졸업 프로젝트 · 프론트엔드 담당</div>
-          <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
-          <div class="stack"><span>기술 입력</span></div>
-          <div class="links"><a href="https://github.com/orgs/TicketRush/repositories">GitHub ↗</a></div>
+        <!-- ▼▼▼ 데이터 분석 ▼▼▼ -->
+        <div class="cat-label">
+          <span class="num">03</span>
+          <h3>데이터 분석</h3>
+          <div class="rule"></div>
         </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">Web Service · 2인 팀장</div>
-          <h4>cseetv</h4>
-          <div class="meta">팀장 · 주도적으로 개발</div>
-          <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
-          <div class="stack"><span>기술 입력</span></div>
-          <div class="links"><a href="https://github.com/cseetv">GitHub ↗</a></div>
+        <div class="proj-grid">
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">Data Analysis</div>
+              <h4>COVID-19 통계 분석</h4>
+              <div class="meta">역할/팀 규모 입력</div>
+              <p class="desc">
+                가설을 세우고 통계적으로 검정한 데이터 분석 프로젝트. (무엇을
+                분석했는지 한 줄 추가하세요) t검정·효과크기 등 통계 기법을
+                활용했습니다.
+              </p>
+              <div class="stack">
+                <span>Python</span><span>statsmodels</span>
+              </div>
+              <div class="links"><a href="#">노션 ↗</a></div>
+            </div>
+          </article>
         </div>
-      </article>
 
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">Web Service · 팀장</div>
-          <h4>밥팅</h4>
-          <div class="meta">팀장 · 프론트엔드 · 기획/설계/조율 · 개발 중</div>
-          <p class="desc">여기에 서비스 한 줄 소개를 적으세요. (개발 진행 중)</p>
-          <div class="stack"><span>기술 입력</span></div>
-          <div class="links"><a href="https://github.com/cheiwonlee">GitHub ↗</a></div>
+        <!-- ▼▼▼ 게임 · 인터랙티브 ▼▼▼ -->
+        <div class="cat-label">
+          <span class="num">04</span>
+          <h3>게임 · 인터랙티브</h3>
+          <div class="rule"></div>
         </div>
-      </article>
-    </div>
+        <div class="proj-grid">
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">App · 4인 팀장/PM</div>
+              <h4>공강이세요?</h4>
+              <div class="meta">Unity · Google Play 출시</div>
+              <p class="desc">
+                상명대 단과대학 건물별로, 입력한 시간이나 현재 시간에 수업이
+                없는 빈 강의실을 알려주는 앱. 기획·개발·배포를 맡고,
+                학과사무실을 직접 방문해 강의실 자료를 수집했습니다.
+              </p>
+              <div class="stack">
+                <span>Unity</span><span>C#</span><span>Google Play</span>
+              </div>
+              <div class="links"><a href="#">Play 스토어 ↗</a></div>
+            </div>
+          </article>
 
-    <!-- ▼▼▼ 데이터 분석 ▼▼▼ -->
-    <div class="cat-label"><span class="num">03</span><h3>데이터 분석</h3><div class="rule"></div></div>
-    <div class="proj-grid">
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">Data Analysis</div>
-          <h4>COVID-19 통계 분석</h4>
-          <div class="meta">역할/팀 규모 입력</div>
-          <p class="desc">가설을 세우고 통계적으로 검정한 데이터 분석 프로젝트. (무엇을 분석했는지 한 줄 추가하세요) t검정·효과크기 등 통계 기법을 활용했습니다.</p>
-          <div class="stack"><span>Python</span><span>statsmodels</span></div>
-          <div class="links"><a href="#">노션 ↗</a></div>
+          <article class="card">
+            <div class="thumb">썸네일 자리</div>
+            <div class="body">
+              <div class="kicker">IoT · 5인</div>
+              <h4>감정 기반 향수 제조기</h4>
+              <div class="meta">
+                웹 대시보드 개발 · 센서 구현 · 통신 점검 · PM
+              </div>
+              <p class="desc">
+                감정에 맞춰 향수를 제조하는 IoT 기기와, 향료 잔량·상태를
+                실시간으로 보여주는 웹 대시보드를 만든 프로젝트. 센서(HW)부터
+                서버(Django), 화면까지 데이터가 흐르는 전체 과정을 다뤘습니다.
+              </p>
+              <div class="stack">
+                <span>Django</span><span>Python</span><span>JavaScript</span
+                ><span>STM32/C</span>
+              </div>
+              <div class="links">
+                <a href="#">GitHub ↗</a><a href="#">노션 ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Unity 게임: 이미지/내용 받는 대로 추가 -->
+          <article class="card placeholder">
+            <div class="thumb">Unity 게임 (준비 중)</div>
+            <div class="body">
+              <div class="kicker">Game · Unity</div>
+              <h4>Unity 게임</h4>
+              <div class="meta">내용 추가 예정</div>
+              <p class="desc">여기에 Unity 게임 소개를 추가하세요.</p>
+              <div class="stack"><span>Unity</span><span>C#</span></div>
+            </div>
+          </article>
         </div>
-      </article>
-    </div>
 
-    <!-- ▼▼▼ 게임 · 인터랙티브 ▼▼▼ -->
-    <div class="cat-label"><span class="num">04</span><h3>게임 · 인터랙티브</h3><div class="rule"></div></div>
-    <div class="proj-grid">
-
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">App · 4인 팀장/PM</div>
-          <h4>공강이세요?</h4>
-          <div class="meta">Unity · Google Play 출시</div>
-          <p class="desc">상명대 단과대학 건물별로, 입력한 시간이나 현재 시간에 수업이 없는 빈 강의실을 알려주는 앱. 기획·개발·배포를 맡고, 학과사무실을 직접 방문해 강의실 자료를 수집했습니다.</p>
-          <div class="stack"><span>Unity</span><span>C#</span><span>Google Play</span></div>
-          <div class="links"><a href="#">Play 스토어 ↗</a></div>
+        <!-- ▼▼▼ 진행 예정 ▼▼▼ -->
+        <div class="cat-label">
+          <span class="num">05</span>
+          <h3>진행 예정</h3>
+          <div class="rule"></div>
         </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb">썸네일 자리</div>
-        <div class="body">
-          <div class="kicker">IoT · 5인</div>
-          <h4>감정 기반 향수 제조기</h4>
-          <div class="meta">웹 대시보드 개발 · 센서 구현 · 통신 점검 · PM</div>
-          <p class="desc">감정에 맞춰 향수를 제조하는 IoT 기기와, 향료 잔량·상태를 실시간으로 보여주는 웹 대시보드를 만든 프로젝트. 센서(HW)부터 서버(Django), 화면까지 데이터가 흐르는 전체 과정을 다뤘습니다.</p>
-          <div class="stack"><span>Django</span><span>Python</span><span>JavaScript</span><span>STM32/C</span></div>
-          <div class="links"><a href="#">GitHub ↗</a><a href="#">노션 ↗</a></div>
+        <div class="proj-grid">
+          <article class="card placeholder">
+            <div class="thumb">Coming Soon</div>
+            <div class="body">
+              <div class="kicker">Finance · 예정</div>
+              <h4>우리WON 금융 프로젝트</h4>
+              <div class="meta">2026 우리WON 청년 IT 아카데미</div>
+              <p class="desc">
+                교육 과정에서 진행할 금융 도메인 프로젝트. 완성되면 이곳에
+                채워집니다.
+              </p>
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <!-- Unity 게임: 이미지/내용 받는 대로 추가 -->
-      <article class="card placeholder">
-        <div class="thumb">Unity 게임 (준비 중)</div>
-        <div class="body">
-          <div class="kicker">Game · Unity</div>
-          <h4>Unity 게임</h4>
-          <div class="meta">내용 추가 예정</div>
-          <p class="desc">여기에 Unity 게임 소개를 추가하세요.</p>
-          <div class="stack"><span>Unity</span><span>C#</span></div>
-        </div>
-      </article>
-    </div>
-
-    <!-- ▼▼▼ 진행 예정 ▼▼▼ -->
-    <div class="cat-label"><span class="num">05</span><h3>진행 예정</h3><div class="rule"></div></div>
-    <div class="proj-grid">
-      <article class="card placeholder">
-        <div class="thumb">Coming Soon</div>
-        <div class="body">
-          <div class="kicker">Finance · 예정</div>
-          <h4>우리WON 금융 프로젝트</h4>
-          <div class="meta">2026 우리WON 청년 IT 아카데미</div>
-          <p class="desc">교육 과정에서 진행할 금융 도메인 프로젝트. 완성되면 이곳에 채워집니다.</p>
-        </div>
-      </article>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      EXPERIENCE — 경력 · 활동
      ▶ 항목 추가: <div class="tl-item">...</div> 복사
 ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="experience" style="background:linear-gradient(180deg,#EEF2F8,var(--paper))">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Experience</div>
-      <h2>경력 · 활동</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="when">2026.08 – 2026.12 · 우리금융그룹</div>
-        <h4>우리WON 청년 IT 아카데미</h4>
-        <p>금융 현업 데이터·프로젝트 중심의 전일제 IT 교육 과정 참여. (진행 예정)</p>
+    <section class="section section-tint" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Experience</div>
+          <h2>경력 · 활동</h2>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="when">2026.08 – 2026.12 · 우리금융그룹</div>
+            <h4>우리WON 청년 IT 아카데미</h4>
+            <p>
+              금융 현업 데이터·프로젝트 중심의 전일제 IT 교육 과정 참여. (진행
+              예정)
+            </p>
+          </div>
+          <div class="tl-item">
+            <div class="when">QA 인턴십 · 6개월</div>
+            <h4>QA 인턴 (품질 검증)</h4>
+            <p>
+              재현되지 않는 오류도 재현 조건을 좁혀가며 원인을 끝까지 추적해
+              개선. 작은 오류 하나가 사용자 신뢰를 무너뜨릴 수 있음을
+              배웠습니다. (기관명·기간 직접 입력)
+            </p>
+          </div>
+          <div class="tl-item">
+            <div class="when">교내 · 수상</div>
+            <h4>C 프로그래밍 교내 대회 최우수상</h4>
+            <p>관련 활동·수상 내역을 여기에 정리하세요.</p>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="when">QA 인턴십 · 6개월</div>
-        <h4>QA 인턴 (품질 검증)</h4>
-        <p>재현되지 않는 오류도 재현 조건을 좁혀가며 원인을 끝까지 추적해 개선. 작은 오류 하나가 사용자 신뢰를 무너뜨릴 수 있음을 배웠습니다. (기관명·기간 직접 입력)</p>
-      </div>
-      <div class="tl-item">
-        <div class="when">교내 · 수상</div>
-        <h4>C 프로그래밍 교내 대회 최우수상</h4>
-        <p>관련 활동·수상 내역을 여기에 정리하세요.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════════
      CONTACT
      ▶ 이메일/GitHub 주소를 본인 것으로 바꾸세요
 ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="contact">
-  <div class="wrap">
-    <div class="contact">
-      <h2>함께 이야기 나눠요</h2>
-      <p>연락은 아래 채널로 편하게 주세요.</p>
-      <div class="links">
-        <a href="mailto:codnjs74@naver.com" class="btn btn-primary">이메일 보내기</a>
-        <a href="https://github.com/cheiwonlee" class="btn btn-ghost">GitHub ↗</a>
-        <!-- 이력서 PDF: href를 파일명으로 바꾸세요
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <h2>함께 이야기 나눠요</h2>
+          <p>연락은 아래 채널로 편하게 주세요.</p>
+          <div class="links">
+            <a href="mailto:codnjs74@naver.com" class="btn btn-primary"
+              >이메일 보내기</a
+            >
+            <a href="https://github.com/cheiwonlee" class="btn btn-ghost"
+              >GitHub ↗</a
+            >
+            <!-- 이력서 PDF: href를 파일명으로 바꾸세요
         <a href="resume.pdf" class="btn btn-ghost">이력서 PDF ↓</a> -->
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  © 2026 이채원 (Chaewon Lee) · Frontend Developer
-</footer>
-
-</body>
+    <footer>© 2026 이채원 (Chaewon Lee) · Frontend Developer</footer>
+  </body>
 </html>
