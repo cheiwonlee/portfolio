@@ -24,13 +24,22 @@
 ════════════════════════════════════════════════════════════════ -->
     <nav class="nav">
       <div class="wrap">
-        <div class="brand">CHAEWON<span>.</span></div>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <a href="#top" class="brand">채원</a>
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span></span><span></span>
+        </button>
+        <ul id="site-nav">
+          <li><a href="#about">자기소개</a></li>
+          <li><a href="#skills">기술</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#experience">경험</a></li>
+          <li><a href="#contact">연락처</a></li>
         </ul>
       </div>
     </nav>
@@ -40,22 +49,132 @@
      ▶ 고칠 것: 이름, 한 줄 소개, 부연 설명
 ════════════════════════════════════════════════════════════════ -->
     <header class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Frontend Developer · 금융IT 지향</div>
-        <h1>
-          화면을 만드는 개발자에서,<br /><span class="hl"
-            >데이터 흐름까지 이해하는</span
-          ><br />개발자로.
-        </h1>
-        <p class="sub">
-          서비스를 직접 기획하고 화면으로 구현해온 프론트엔드 개발자
-          이채원입니다. 사용자가 믿고 쓸 수 있는 금융 서비스를 만드는 것을
-          목표로 합니다.
-        </p>
-        <div class="cta">
-          <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-          <a href="#contact" class="btn btn-ghost">연락하기</a>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Frontend Developer · 금융IT 지향</div>
+          <h1>
+            화면을 만드는 개발자에서,<br /><span class="hl"
+              >데이터 흐름까지 이해하는</span
+            ><br />개발자로.
+          </h1>
+          <p class="sub">
+            기획한 요구를 API와 상태로 잇고, 화면으로 구현해 온 프론트엔드
+            개발자입니다. 사용자가 믿고 쓸 수 있는 금융 서비스를, 데이터가
+            어떻게 흐르는지 보이는 UI로 만드는 것이 목표입니다.
+          </p>
+          <div class="cta">
+            <a href="#projects" class="btn btn-primary">
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="14"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="3"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="14"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+              프로젝트 보기
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M4 7l8 6 8-6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              연락하기
+            </a>
+          </div>
         </div>
+
+        <aside class="hero-flow" aria-hidden="true">
+          <ol class="flow-list">
+            <li>
+              <span class="flow-key">Intent</span>
+              <span class="flow-val">기획 · 요구사항</span>
+            </li>
+            <li>
+              <span class="flow-key">API</span>
+              <span class="flow-val">데이터 구조</span>
+            </li>
+            <li>
+              <span class="flow-key">State</span>
+              <span class="flow-val">상태 · 검증</span>
+            </li>
+            <li>
+              <span class="flow-key">UI</span>
+              <span class="flow-val">화면 · 경험</span>
+            </li>
+          </ol>
+          <svg
+            class="flow-chart"
+            viewBox="0 0 280 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path class="flow-chart-grid" d="M0 14h280M0 28h280M0 42h280" />
+            <path
+              class="flow-chart-line"
+              d="M4 40 C 36 38, 52 22, 84 24 C 116 26, 132 44, 164 32 C 196 20, 212 12, 244 18 C 256 20, 268 16, 276 10"
+            />
+          </svg>
+          <div class="flow-keys">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>SQL</span>
+          </div>
+        </aside>
       </div>
     </header>
 
@@ -73,11 +192,7 @@
         </div>
         <div class="about">
           <!-- 사진 자리 -->
-          <div class="portrait">
-            여기에 사진을 넣으세요<br />(선택)
-            <!-- 사진을 넣으려면 위 한 줄을 지우고 아래처럼:
-             <img src="profile.jpg" alt="이채원"> -->
-          </div>
+          <div class="portrait portrait-empty">CW</div>
 
           <!-- 자기소개 텍스트 -->
           <div class="bio">
@@ -111,45 +226,182 @@
         <div class="section-head">
           <div class="eyebrow">Skills</div>
           <h2>기술 스택</h2>
-          <p>기술 스택 작성하였음</p>
         </div>
         <div class="skills-grid">
           <div class="skill-col">
             <h3>좀 많이 해봄</h3>
             <div class="lv">Comfortable</div>
             <ul>
-              <li>React</li>
-              <li>TypeScript</li>
-              <li>JavaScript</li>
-              <li>HTML/CSS</li>
-              <li>Unity · C#</li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                  alt=""
+                />
+                React
+              </li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                  alt=""
+                />
+                TypeScript
+              </li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                  alt=""
+                />
+                JavaScript
+              </li>
+              <li>
+                <span class="skill-icons">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                    alt=""
+                  />
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                    alt=""
+                  />
+                </span>
+                HTML/CSS
+              </li>
+              <li>
+                <span class="skill-icons">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg"
+                    alt=""
+                  />
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+                    alt=""
+                  />
+                </span>
+                Unity · C#
+              </li>
             </ul>
           </div>
           <div class="skill-col">
             <h3>다뤄봄</h3>
             <div class="lv">Familiar</div>
             <ul>
-              <li>Git / GitHub</li>
-              <li>Django</li>
-              <li>SQL</li>
-              <li>Python</li>
-              <li>Figma</li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                  alt=""
+                />
+                Git / GitHub
+              </li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
+                  alt=""
+                />
+                Django
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <ellipse
+                    cx="12"
+                    cy="7"
+                    rx="7"
+                    ry="3"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                </svg>
+                SQL
+              </li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                  alt=""
+                />
+                Python
+              </li>
+              <li>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                  alt=""
+                />
+                Figma
+              </li>
             </ul>
           </div>
           <div class="skill-col">
             <h3>학습 중인 것</h3>
             <div class="lv">Learning</div>
             <ul>
-              <li>백엔드 · 서버</li>
-              <li>데이터 처리</li>
-              <li>알고리즘 · 코딩테스트</li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M3 9h18M8 5v4"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                </svg>
+                백엔드 · 서버
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <ellipse
+                    cx="12"
+                    cy="7"
+                    rx="7"
+                    ry="3"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                </svg>
+                데이터 처리
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M8 8l-4 4 4 4M16 8l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                알고리즘 · 코딩테스트
+              </li>
             </ul>
           </div>
         </div>
         <!-- 자격증 -->
         <div class="certs">
-          <strong>자격증</strong> &nbsp;
-          정보처리기사(실기준비중) · SQLD(시험봄)
+          <strong>자격증</strong> &nbsp; 정보처리기사(실기준비중) · SQLD(시험봄)
         </div>
       </div>
     </section>
@@ -180,10 +432,50 @@
         <div class="proj-grid feature">
           <!-- ===== 프로젝트 카드 (대표작, 큰 카드) ===== -->
           <article class="card big">
-            <div class="thumb">
-              썸네일 이미지 자리 (16:9 권장)
-              <!-- 이미지 넣기: 위 글자 지우고 → <img src="wherelive.png" alt="어디살지"> -->
+            <div class="thumb thumb-embed thumb-site">
+              <div class="thumb-chrome" aria-hidden="true">
+                <span class="dots"
+                  ><span></span><span></span><span></span
+                ></span>
+                <span class="url">cardfit-two.vercel.app</span>
+              </div>
+              <div class="thumb-viewport">
+                <iframe
+                  src="https://cardfit-two.vercel.app/"
+                  title="카드정산 홈페이지 미리보기"
+                  loading="lazy"
+                  tabindex="-1"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+              <span class="thumb-site-hint" aria-hidden="true"
+                ><span>자세히 보기</span></span
+              >
             </div>
+            <div class="body">
+              <div class="kicker">Finance · 1인</div>
+              <h4>카드정산</h4>
+              <div class="meta">기획 · 개발 · 배포 전 과정 단독</div>
+              <p class="desc">
+                연봉과 한 달 카드값으로 소득공제 문턱과 한도를 눈금에 올리는
+                계산기. 문턱 아래는 신용이든 체크든 공제액이 같아서 혜택을 보고,
+                그 위부터 결제 수단을 바꾸라고 안내합니다. 급여와 소비 금액은
+                서버로 보내지 않습니다.
+              </p>
+              <div class="stack">
+                <span>React</span><span>TypeScript</span><span>Vite</span
+                ><span>Vitest</span>
+              </div>
+              <div class="links">
+                <a href="https://cardfit-two.vercel.app/">홈페이지 ↗</a>
+                <a href="https://github.com/cheiwonlee/cardfit">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===== 프로젝트 카드 (대표작 2) ===== -->
+          <article class="card big">
+            <div class="thumb thumb-blank">WhereLive</div>
             <div class="body">
               <div class="kicker">Web Service · 1인</div>
               <h4>어디살지 (WhereLive)</h4>
@@ -194,32 +486,12 @@
                 곧 서비스 신뢰임을 체감한 프로젝트입니다.
               </p>
               <div class="stack">
-                <span>기술 입력</span><span>예: React</span>
+                <span>React</span>
               </div>
               <div class="links">
-                <a href="#">GitHub ↗</a>
-                <a href="#">데모 ↗</a>
+                <a href="https://github.com/cheiwonlee/WhereLive">GitHub ↗</a>
+                <a href="#">홈페이지 ↗</a>
               </div>
-            </div>
-          </article>
-
-          <!-- ===== 프로젝트 카드 (대표작 2) ===== -->
-          <article class="card big">
-            <div class="thumb">썸네일 이미지 자리</div>
-            <div class="body">
-              <div class="kicker">Metaverse · 4인 팀장</div>
-              <h4>캠퍼스 메타버스</h4>
-              <div class="meta">
-                ZEP · 팀 결과물을 혼자 재구축해 학교 공식 자산으로 인계
-              </div>
-              <p class="desc">
-                학교 캠퍼스를 메타버스로 구현하고, 인계 규격에 맞춰 팀 결과물을
-                혼자 다시 구축했습니다. 백업 자료를 정리·활용하고, 이미지가 없던
-                천안 캠퍼스는 화면을 하나씩 다시 캡처해 채우며 끝까지
-                완성했습니다.
-              </p>
-              <div class="stack"><span>ZEP</span><span>이미지 편집</span></div>
-              <div class="links"><a href="#">데모 영상 ↗</a></div>
             </div>
           </article>
         </div>
@@ -233,47 +505,96 @@
         <div class="proj-grid">
           <!-- ===== 카드 복사용 기본 틀 (이 <article>...</article> 통째로 복사해 새 프로젝트 추가) ===== -->
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-embed thumb-site">
+              <div class="thumb-chrome" aria-hidden="true">
+                <span class="dots"
+                  ><span></span><span></span><span></span
+                ></span>
+                <span class="url">cur-it.duckdns.org</span>
+              </div>
+              <div class="thumb-viewport">
+                <iframe
+                  src="https://www.cur-it.duckdns.org/"
+                  title="curit 홈페이지 미리보기"
+                  loading="lazy"
+                  tabindex="-1"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+              <span class="thumb-site-hint" aria-hidden="true"
+                ><span>자세히 보기</span></span
+              >
+            </div>
             <div class="body">
-              <div class="kicker">Web Service</div>
+              <div class="kicker">Web Service · 1인</div>
               <h4>curit</h4>
-              <div class="meta">역할 입력 (예: 팀 규모 · 담당)</div>
-              <p class="desc">
-                여기에 서비스 한 줄 소개를 적으세요. 무엇을 하는 서비스인지,
-                어떤 문제를 해결하는지.
-              </p>
+              <div class="meta">전 과정 단독</div>
+              <p class="desc">유용한 사이트를 한 곳에 모아 큐레이트합니다.</p>
               <div class="stack">
                 <span>React</span><span>TypeScript</span><span>Vite</span>
               </div>
               <div class="links">
-                <a href="https://www.cur-it.duckdns.org/">데모 ↗</a>
+                <a href="https://www.cur-it.duckdns.org/">홈페이지 ↗</a>
                 <a href="https://github.com/cheiwonlee/curit">GitHub ↗</a>
               </div>
             </div>
           </article>
 
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-embed thumb-site">
+              <div class="thumb-chrome" aria-hidden="true">
+                <span class="dots"
+                  ><span></span><span></span><span></span
+                ></span>
+                <span class="url">clear-plate.vercel.app</span>
+              </div>
+              <div class="thumb-viewport">
+                <iframe
+                  src="https://clear-plate.vercel.app/"
+                  title="ClearPlate 홈페이지 미리보기"
+                  loading="lazy"
+                  tabindex="-1"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+              <span class="thumb-site-hint" aria-hidden="true"
+                ><span>자세히 보기</span></span
+              >
+            </div>
             <div class="body">
               <div class="kicker">Web Service · 1인</div>
               <h4>ClearPlate</h4>
               <div class="meta">교양 과제 · 전 과정 단독</div>
-              <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
-              <div class="stack"><span>기술 입력</span></div>
+              <p class="desc">
+                매일 먹는 식사 접시(Plate)에서 해로운 영양소를 깨끗하게(Clear)
+                비워내는, 지질 관리 특화 식단 기록 앱
+              </p>
+              <div class="stack"><span>React</span><span>TypeScript</span></div>
               <div class="links">
+                <a href="https://clear-plate.vercel.app/">홈페이지 ↗</a>
                 <a href="https://github.com/cheiwonlee/ClearPlate">GitHub ↗</a>
               </div>
             </div>
           </article>
 
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-blank">
+              <span
+                >TicketRush<span class="thumb-note">데모 비공개</span></span
+              >
+            </div>
             <div class="body">
               <div class="kicker">Web Service · 팀</div>
               <h4>TicketRush</h4>
-              <div class="meta">졸업 프로젝트 · 프론트엔드 담당</div>
-              <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
-              <div class="stack"><span>기술 입력</span></div>
+              <div class="meta">
+                졸업 프로젝트 · 프론트엔드 담당 · 개발 중
+              </div>
+              <p class="desc">
+                공연 티켓 예매 서비스의 화면을 담당하는 졸업 프로젝트. 좌석
+                선점부터 결제·발급까지 이어지는 흐름을 만들고 있으며, 운영 중인
+                사이트는 팀 내부만 접속합니다.
+              </p>
+              <div class="stack"><span>React</span><span>TypeScript</span></div>
               <div class="links">
                 <a href="https://github.com/orgs/TicketRush/repositories"
                   >GitHub ↗</a
@@ -283,21 +604,46 @@
           </article>
 
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-embed thumb-site">
+              <div class="thumb-chrome" aria-hidden="true">
+                <span class="dots"
+                  ><span></span><span></span><span></span
+                ></span>
+                <span class="url">cseetv-fe.vercel.app</span>
+              </div>
+              <div class="thumb-viewport">
+                <iframe
+                  src="https://cseetv-fe.vercel.app/"
+                  title="cseetv 홈페이지 미리보기"
+                  loading="lazy"
+                  tabindex="-1"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+              <span class="thumb-site-hint" aria-hidden="true"
+                ><span>자세히 보기</span></span
+              >
+            </div>
             <div class="body">
               <div class="kicker">Web Service · 2인 팀장</div>
               <h4>cseetv</h4>
-              <div class="meta">팀장 · 주도적으로 개발</div>
-              <p class="desc">여기에 서비스 한 줄 소개를 적으세요.</p>
-              <div class="stack"><span>기술 입력</span></div>
+              <div class="meta">팀장 · 풀스택 개발</div>
+              <p class="desc">
+                야간 CCTV 영상의 이상 움직임 감지 및 알림 시스템
+              </p>
+              <div class="stack">
+                <span>React 18 + TypeScript </span><span>Vite</span
+                ><span>Node.js</span><span>Express</span><span>PWA</span>
+              </div>
               <div class="links">
+                <a href="https://cseetv-fe.vercel.app/">홈페이지 ↗</a>
                 <a href="https://github.com/cseetv">GitHub ↗</a>
               </div>
             </div>
           </article>
 
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-blank">밥팅</div>
             <div class="body">
               <div class="kicker">Web Service · 팀장</div>
               <h4>밥팅</h4>
@@ -305,9 +651,12 @@
                 팀장 · 프론트엔드 · 기획/설계/조율 · 개발 중
               </div>
               <p class="desc">
-                여기에 서비스 한 줄 소개를 적으세요. (개발 진행 중)
+                학교 과간 교류 + 학식 매칭 플랫폼 (개발 진행 중)
               </p>
-              <div class="stack"><span>기술 입력</span></div>
+              <div class="stack">
+                <span>React Native</span><span>Zustand</span
+                ><span>TypeScript</span>
+              </div>
               <div class="links">
                 <a href="https://github.com/cheiwonlee">GitHub ↗</a>
               </div>
@@ -323,20 +672,25 @@
         </div>
         <div class="proj-grid">
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-blank">Data Analysis</div>
             <div class="body">
-              <div class="kicker">Data Analysis</div>
-              <h4>COVID-19 통계 분석</h4>
-              <div class="meta">역할/팀 규모 입력</div>
+              <div class="kicker">데이터 분석</div>
+              <h4>코로나19가 고등학교 생활 및 대학 입시에 미친 영향 분석</h4>
+              <div class="meta">팀장·5인</div>
               <p class="desc">
-                가설을 세우고 통계적으로 검정한 데이터 분석 프로젝트. (무엇을
-                분석했는지 한 줄 추가하세요) t검정·효과크기 등 통계 기법을
-                활용했습니다.
+                69명의 실제 생활기록부 PDF를 파싱하여, 코로나 전후 코호트 간
+                내신 성적의 구조적 차이를 통계적으로 검증. Welch t-test,
+                Brown-Forsythe, Hedges' g, OLS 회귀분석 구현을 이용.
               </p>
               <div class="stack">
-                <span>Python</span><span>statsmodels</span>
+                <span>Python</span>
               </div>
-              <div class="links"><a href="#">노션 ↗</a></div>
+              <div class="links">
+                <a
+                  href="https://github.com/vina5565/statistical_analysis_project_final"
+                  >GitHub ↗</a
+                >
+              </div>
             </div>
           </article>
         </div>
@@ -349,7 +703,47 @@
         </div>
         <div class="proj-grid">
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb thumb-embed thumb-site">
+              <div class="thumb-chrome" aria-hidden="true">
+                <span class="dots"
+                  ><span></span><span></span><span></span
+                ></span>
+                <span class="url">zep.us/play/2NXVpX</span>
+              </div>
+              <div class="thumb-viewport">
+                <iframe
+                  src="https://zep.us/play/2NXVpX"
+                  title="상명대학교 메타버스 캠퍼스 미리보기"
+                  loading="lazy"
+                  tabindex="-1"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+              <span class="thumb-site-hint" aria-hidden="true"
+                ><span>자세히 보기</span></span
+              >
+            </div>
+            <div class="body">
+              <div class="kicker">Metaverse · 4인 팀장</div>
+              <h4>캠퍼스 메타버스</h4>
+              <div class="meta">
+                ZEP · 팀 결과물을 혼자 재구축해 학교 공식 자산으로 인계
+              </div>
+              <p class="desc">
+                학교 캠퍼스를 메타버스로 구현하고, 인계 규격에 맞춰 팀 결과물을
+                혼자 다시 구축했습니다. 백업 자료를 정리·활용하고, 이미지가 없던
+                천안 캠퍼스는 화면을 하나씩 다시 캡처해 채우며 끝까지
+                완성했습니다.
+              </p>
+              <div class="stack"><span>ZEP</span><span>이미지 편집</span></div>
+              <div class="links">
+                <a href="https://zep.us/play/2NXVpX">메타버스 바로가기 ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb"><img src="space.png" alt="Unity 샘플" /></div>
             <div class="body">
               <div class="kicker">App · 4인 팀장/PM</div>
               <h4>공강이세요?</h4>
@@ -367,7 +761,9 @@
           </article>
 
           <article class="card">
-            <div class="thumb">썸네일 자리</div>
+            <div class="thumb">
+              <img src="iot-sample.png" alt="IoT 프로젝트" />
+            </div>
             <div class="body">
               <div class="kicker">IoT · 5인</div>
               <h4>감정 기반 향수 제조기</h4>
@@ -384,14 +780,19 @@
                 ><span>STM32/C</span>
               </div>
               <div class="links">
-                <a href="#">GitHub ↗</a><a href="#">노션 ↗</a>
+                <a
+                  href="https://github.com/tmdgns5136/IOT-Programming7/tree/main"
+                  >GitHub ↗</a
+                ><a href="#">노션 ↗</a>
               </div>
             </div>
           </article>
 
           <!-- Unity 게임: 이미지/내용 받는 대로 추가 -->
           <article class="card placeholder">
-            <div class="thumb">Unity 게임 (준비 중)</div>
+            <div class="thumb">
+              <img src="unity-sample.png" alt="Unity 샘플" />
+            </div>
             <div class="body">
               <div class="kicker">Game · Unity</div>
               <h4>Unity 게임</h4>
@@ -410,7 +811,7 @@
         </div>
         <div class="proj-grid">
           <article class="card placeholder">
-            <div class="thumb">Coming Soon</div>
+            <div class="thumb thumb-blank">Coming Soon</div>
             <div class="body">
               <div class="kicker">Finance · 예정</div>
               <h4>우리WON 금융 프로젝트</h4>
@@ -455,7 +856,7 @@
           </div>
           <div class="tl-item">
             <div class="when">교내 · 수상</div>
-            <h4>C 프로그래밍 교내 대회 최우수상</h4>
+            <h4>추가 예정</h4>
             <p>관련 활동·수상 내역을 여기에 정리하세요.</p>
           </div>
         </div>
@@ -472,12 +873,41 @@
           <h2>함께 이야기 나눠요</h2>
           <p>연락은 아래 채널로 편하게 주세요.</p>
           <div class="links">
-            <a href="mailto:codnjs74@naver.com" class="btn btn-primary"
-              >이메일 보내기</a
-            >
-            <a href="https://github.com/cheiwonlee" class="btn btn-ghost"
-              >GitHub ↗</a
-            >
+            <a href="mailto:codnjs74@naver.com" class="btn btn-primary">
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M4 7l8 6 8-6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              이메일 보내기
+            </a>
+            <a href="https://github.com/cheiwonlee" class="btn btn-ghost">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.36 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.84c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"
+                />
+              </svg>
+              GitHub
+            </a>
             <!-- 이력서 PDF: href를 파일명으로 바꾸세요
         <a href="resume.pdf" class="btn btn-ghost">이력서 PDF ↓</a> -->
           </div>
@@ -485,6 +915,292 @@
       </div>
     </section>
 
-    <footer>© 2026 이채원 (Chaewon Lee) · Frontend Developer</footer>
+    <dialog
+      class="project-modal"
+      id="project-modal"
+      aria-labelledby="project-modal-title"
+    >
+      <div class="project-modal-panel">
+        <button type="button" class="modal-close" aria-label="닫기">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <div class="modal-thumb" hidden></div>
+        <div class="modal-body">
+          <div class="kicker"></div>
+          <h3 id="project-modal-title"></h3>
+          <p class="meta"></p>
+          <p class="desc"></p>
+          <div class="stack"></div>
+          <div class="links"></div>
+        </div>
+      </div>
+    </dialog>
+
+    <a href="#top" class="to-top" id="to-top" aria-label="맨 위로">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M6 14l6-6 6 6"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <footer>© 2026 이채원 (Cheiwon Lee) · Frontend Developer</footer>
+    <script>
+      (function () {
+        var FRAME_W = 1600;
+        function fitOne(el) {
+          var box = el.querySelector(".thumb-viewport") || el;
+          var w = box.clientWidth;
+          if (!w) return;
+          el.style.setProperty("--thumb-scale", String(w / FRAME_W));
+        }
+        function fitAll() {
+          document.querySelectorAll(".thumb-site").forEach(fitOne);
+        }
+        if ("ResizeObserver" in window) {
+          var ro = new ResizeObserver(function (entries) {
+            entries.forEach(function (entry) {
+              fitOne(entry.target);
+            });
+          });
+          document.querySelectorAll(".thumb-site").forEach(function (el) {
+            ro.observe(el);
+          });
+        }
+        window.addEventListener("resize", fitAll);
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", fitAll);
+        } else {
+          fitAll();
+        }
+      })();
+
+      (function () {
+        var dialog = document.getElementById("project-modal");
+        if (!dialog) return;
+        var closeBtn = dialog.querySelector(".modal-close");
+        var thumbEl = dialog.querySelector(".modal-thumb");
+        var kickerEl = dialog.querySelector(".kicker");
+        var titleEl = document.getElementById("project-modal-title");
+        var metaEl = dialog.querySelector(".meta");
+        var descEl = dialog.querySelector(".desc");
+        var stackEl = dialog.querySelector(".stack");
+        var linksEl = dialog.querySelector(".links");
+        var lastFocus = null;
+
+        function textOf(card, sel) {
+          var n = card.querySelector(sel);
+          return n ? n.textContent.trim() : "";
+        }
+
+        function fill(card) {
+          kickerEl.textContent = textOf(card, ".kicker");
+          titleEl.textContent = textOf(card, "h4");
+          metaEl.textContent = textOf(card, ".meta");
+          metaEl.hidden = !metaEl.textContent;
+          descEl.textContent = textOf(card, ".desc");
+          descEl.hidden = !descEl.textContent;
+
+          var stack = card.querySelector(".stack");
+          stackEl.innerHTML = stack ? stack.innerHTML : "";
+          stackEl.hidden = !stackEl.innerHTML.trim();
+
+          linksEl.innerHTML = "";
+          var links = card.querySelector(".links");
+          if (links) {
+            links.querySelectorAll("a").forEach(function (a) {
+              var clone = a.cloneNode(true);
+              var href = clone.getAttribute("href") || "";
+              if (!/^mailto:/i.test(href) && href !== "#") {
+                clone.setAttribute("target", "_blank");
+                clone.setAttribute("rel", "noopener noreferrer");
+              }
+              linksEl.appendChild(clone);
+            });
+          }
+          linksEl.hidden = !linksEl.childElementCount;
+
+          var srcThumb = card.querySelector(".thumb");
+          thumbEl.innerHTML = "";
+          thumbEl.className = "modal-thumb";
+          var img = srcThumb && srcThumb.querySelector("img");
+          if (img) {
+            thumbEl.hidden = false;
+            thumbEl.appendChild(img.cloneNode(true));
+          } else if (srcThumb && srcThumb.classList.contains("thumb-blank")) {
+            thumbEl.hidden = false;
+            thumbEl.classList.add("is-blank");
+            thumbEl.innerHTML = srcThumb.innerHTML;
+          } else if (srcThumb && srcThumb.classList.contains("thumb-embed")) {
+            thumbEl.hidden = false;
+            thumbEl.classList.add("is-embed");
+            var clone = srcThumb.cloneNode(true);
+            var hint = clone.querySelector(".thumb-site-hint");
+            if (hint) hint.remove();
+            thumbEl.appendChild(clone);
+            requestAnimationFrame(function () {
+              var box = clone.querySelector(".thumb-viewport") || clone;
+              var w = box.clientWidth;
+              if (w) clone.style.setProperty("--thumb-scale", String(w / 1600));
+            });
+          } else {
+            thumbEl.hidden = true;
+          }
+        }
+
+        function open(card) {
+          lastFocus = document.activeElement;
+          fill(card);
+          if (typeof dialog.showModal === "function") dialog.showModal();
+          else dialog.setAttribute("open", "");
+          document.body.classList.add("modal-open");
+          closeBtn.focus();
+        }
+
+        function close() {
+          if (typeof dialog.close === "function") dialog.close();
+          else dialog.removeAttribute("open");
+        }
+
+        dialog.addEventListener("close", function () {
+          document.body.classList.remove("modal-open");
+          if (lastFocus && typeof lastFocus.focus === "function")
+            lastFocus.focus();
+        });
+
+        closeBtn.addEventListener("click", close);
+        dialog.addEventListener("click", function (e) {
+          if (e.target === dialog) close();
+        });
+
+        document.querySelectorAll("#projects .card").forEach(function (card) {
+          card.classList.add("is-clickable");
+          var body = card.querySelector(".body");
+          if (body && !card.querySelector(".card-foot")) {
+            var foot = document.createElement("div");
+            foot.className = "card-foot";
+            var links = body.querySelector(".links");
+            if (links) foot.appendChild(links);
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "card-detail";
+            btn.innerHTML =
+              '자세히 보기<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            btn.setAttribute("aria-haspopup", "dialog");
+            foot.appendChild(btn);
+            body.appendChild(foot);
+          }
+          card.addEventListener("click", function (e) {
+            if (e.target.closest("a")) return;
+            open(card);
+          });
+        });
+      })();
+
+      (function () {
+        var nav = document.querySelector(".nav");
+        var brand = document.querySelector(".nav .brand");
+        var navToggle = document.querySelector(".nav-toggle");
+        var toTop = document.getElementById("to-top");
+        var skills = document.getElementById("skills");
+        var links = Array.prototype.slice.call(
+          document.querySelectorAll(".nav ul a[href^='#']"),
+        );
+        var sections = links
+          .map(function (a) {
+            return document.getElementById(
+              (a.getAttribute("href") || "").slice(1),
+            );
+          })
+          .filter(Boolean);
+
+        function goTop(e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        if (brand) brand.addEventListener("click", goTop);
+        if (toTop) toTop.addEventListener("click", goTop);
+
+        function setNavOpen(open) {
+          if (!nav) return;
+          nav.classList.toggle("is-open", open);
+          if (navToggle) {
+            navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+            navToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+          }
+        }
+        if (navToggle) {
+          navToggle.addEventListener("click", function () {
+            setNavOpen(!nav.classList.contains("is-open"));
+          });
+        }
+        links.forEach(function (a) {
+          a.addEventListener("click", function () {
+            setNavOpen(false);
+          });
+        });
+        if (brand) {
+          brand.addEventListener("click", function () {
+            setNavOpen(false);
+          });
+        }
+
+        var ticking = false;
+        function update() {
+          ticking = false;
+          var navH = nav ? nav.offsetHeight : 64;
+          if (toTop && skills) {
+            var reached = skills.getBoundingClientRect().top <= navH + 8;
+            toTop.classList.toggle("is-visible", reached);
+          }
+
+          var probe = navH + 48;
+          var current = null;
+          sections.forEach(function (sec) {
+            if (sec.getBoundingClientRect().top <= probe) current = sec.id;
+          });
+          if (
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 8
+          ) {
+            current = sections.length
+              ? sections[sections.length - 1].id
+              : current;
+          }
+
+          links.forEach(function (a) {
+            var on = current && a.getAttribute("href") === "#" + current;
+            a.classList.toggle("is-active", on);
+            if (on) a.setAttribute("aria-current", "true");
+            else a.removeAttribute("aria-current");
+          });
+        }
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 720) setNavOpen(false);
+          onScroll();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setNavOpen(false);
+        });
+        update();
+      })();
+    </script>
   </body>
 </html>
