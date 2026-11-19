@@ -518,3 +518,17 @@ body.modal-open { overflow: hidden; }
 .ce-copy { display: inline-flex; align-items: center; gap: 5px; border: 0; cursor: pointer; background: rgba(255,255,255,0.1); color: var(--on-dark); font: inherit; font-size: 12px; font-weight: 700; padding: 6px 11px; border-radius: 7px; transition: background .18s, color .18s; }
 .ce-copy svg { width: 15px; height: 15px; }
 .ce-copy:hover, .ce-copy.is-copied { background: var(--accent); color: #fff; }
+
+/* ── 인쇄 / PDF 저장용 ── */
+@media print {
+  .nav, .to-top, dialog, #project-modal, .card-detail { display: none !important; }
+  .hero { padding: 36px 0 30px !important; }
+  .section { padding: 28px 0 !important; }
+  .section-head { margin-bottom: 24px !important; }
+  .card, .skill-col, .tl-item, .proj-metrics { break-inside: avoid; }
+  .cat-label { break-after: avoid; }
+  .card .thumb img { object-fit: contain !important; background: #eef1f6; }
+  .card .links a[href^="http"]::after { content: " — " attr(href); font-weight: 400; color: var(--muted); font-size: 11px; }
+  .contact .links a::after { content: none !important; }
+  a { text-decoration: none !important; }
+}
