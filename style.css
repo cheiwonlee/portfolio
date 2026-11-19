@@ -498,3 +498,13 @@ body.modal-open { overflow: hidden; }
 .project-modal .links a:first-child:hover { background: var(--accent-deep); color: #fff; }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+
+
+/* ── 피드백 반영: 성과 지표 / 스킬 사용처 ── */
+.card .proj-metrics { display: flex; flex-wrap: wrap; gap: 16px 24px; margin: 2px 0 15px; }
+.card .proj-metrics > div { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.card .proj-metrics b { font-family: "Sora", sans-serif; font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 800; color: var(--accent-deep); line-height: 1; letter-spacing: -0.01em; }
+.card.big .proj-metrics b { font-size: 25px; }
+.card .proj-metrics span { font-size: 11.5px; color: var(--muted); line-height: 1.3; }
+.skills-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); align-items: start; }
+.skill-use { font-size: 12px; color: var(--faint); margin: -2px 0 14px; }
